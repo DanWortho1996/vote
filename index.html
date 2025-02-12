@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Page Title -->
+    <h1>Project Vote</h1>
+    <div class="wrapper">
+        <div class="container">
+            <!-- Join Container Section -->
+            <div id="join-container">
+                <input type="text" id="username" placeholder="Enter username">
+                <button id="join-button">Join Game</button>
+            </div>
+            <!-- Question Container Section -->
+            <div id="question-container" class="hide">
+                <div id="question"></div>
+                <div id="answer-buttons" class="btn-container"></div>
+            </div>
+            <!-- End Message Section -->
+            <div id="end-message" class="hide"></div>
+            <!-- Start Button Section -->
+            <button id="start-button" class="hide">Start Game</button>
+            <!-- Leaderboard Section -->
+            <div id="leaderboard" class="hide">
+                <h2>Leaderboard</h2>
+                <ul id="leaderboard-list"></ul>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
