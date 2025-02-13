@@ -139,12 +139,12 @@ const questions = [
         ]
     },
     {
-        question: "What colour do Rhino's sweat?",
+        question: 'Who was the first woman to fly solo across the atlantic?',
         answers: [
-            {text: 'Orange', correct: false},
-            {text: 'Pink', correct: true},
-            {text: 'Red', correct: false},
-            {text: 'Black', correct: false}
+            {text: 'Amanada Holden', correct: false},
+            {text: 'Amelia Earhart', correct: true},
+            {text: 'Alesha Dixon', correct: false},
+            {text: 'Celine Dion', correct: false}
         ]
     },
     {
