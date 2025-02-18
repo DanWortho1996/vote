@@ -229,7 +229,7 @@ const questions = [
     },
     {
         //Q22
-        question: `When was Coca Cola invented?`,
+        question: "When was Coca Cola invented?",
         asnwers: [
             {text: `May 8th, 1886`, correct: true},
             {text: `April 4th 1884`, correct: false},
