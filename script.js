@@ -7,6 +7,11 @@ const endMessageElement = document.getElementById('end-message');
 const leaderboard = document.getElementById('leaderboard');
 const leaderboardList = document.getElementById('leaderboard-list');
 
+// Timer element
+const timerElement = document.createElement('div');
+timerElement.classList.add('timer');
+questionContainer.prepend(timerElement);
+
 let players = [];
 let currentUser = '';
 let score = 0;
@@ -31,12 +36,21 @@ const questions = [
         ]
     },
     {
+        question: 'What year did England win the World Cup?',
+        answers: [
+            {text: '1970', correct: false},
+            {text: '1966', correct: true},
+            {text: '1996', correct: false},
+            {text: '1984', correct: false}
+        ]
+    },
+    {
         question: 'What was one of the first products SONY released when they established their company?',
         answers: [
             {text: 'Electric Rice Cooker', correct: true},
             {text: 'Television', correct: false},
             {text: 'Playstation', correct: false},
-            {text: 'Headset', correct: false}
+                {text: 'Headset', correct: false}
         ]
     },
     {
@@ -192,9 +206,12 @@ const questions = [
             {text: 'Oscar', correct: false}
         ]
     }
+    //Add remaining questions here
 ];
 
 let shuffledQuestions, currentQuestionIndex;
+let timer;
+const timeLimit = 20; // time limit in seconds
 
 joinButton.addEventListener('click', joinGame);
 startButton.addEventListener('click', startGame);
@@ -234,50 +251,84 @@ function showQuestion(question) {
         const button = document.createElement('button');
         button.innerText = answer.text;
         button.classList.add('btn');
+        button.classList.add('btn-container');
         if (answer.correct) {
             button.dataset.correct = answer.correct;
         }
         button.addEventListener('click', selectAnswer);
         answerButtonsElement.appendChild(button);
     });
+    startTimer();
+}
+
+function startTimer() {
+    let timeLeft = timeLimit;
+    timerElement.innerText = `Time left: ${timeLeft}s`;
+    timer = setInterval(() => {
+        timeLeft--;
+        timerElement.innerText = `Time left: ${timeLeft}s`;
+        if (timeLeft <= 0) {
+            clearInterval(timer);
+            revealCorrectAnswer();
+            endGame(false);
+        }
+    }, 1000);
 }
 
 function resetState() {
+    clearInterval(timer);
+    timerElement.innerText = '';
     while (answerButtonsElement.firstChild) {
         answerButtonsElement.removeChild(answerButtonsElement.firstChild);
     }
 }
 
 function selectAnswer(e) {
+    clearInterval(timer);
     const selectedButton = e.target;
-    const correct = selectedButton.dataset.correct;
+    const correct = selectedButton.dataset.correct === 'true';
+    revealCorrectAnswer();
+    Array.from(answerButtonsElement.children).forEach(button => {
+        button.removeEventListener('click', selectAnswer);
+    });
     if (correct) {
         score++;
         currentQuestionIndex++;
         if (currentQuestionIndex < shuffledQuestions.length) {
-            setNextQuestion();
+            setTimeout(setNextQuestion, 2000); // Move to the next question after a delay
         } else {
-            endMessageElement.classList.remove('hide');
-            endMessageElement.innerText = `Congratulations! You answered all the questions correctly! Your score is ${score}.`;
-            startButton.innerText = 'Restart Game';
-            startButton.classList.remove('hide');
-            startButton.addEventListener('click', restartGame);
-            updateLeaderboard(currentUser, score);
+            endGame(true);
         }
     } else {
-        endMessageElement.classList.remove('hide');
-        endMessageElement.innerText = `Game Over! You answered incorrectly. Your score is ${score}.`;
-        startButton.innerText = 'Restart Game';
-        startButton.classList.remove('hide');
-        questionContainer.classList.add('hide');
-        startButton.addEventListener('click', restartGame);
-        updateLeaderboard(currentUser, score);
+        endGame(false);
     }
 }
 
-function restartGame() {
-    startButton.removeEventListener('click', restartGame);
-    startGame();
+function revealCorrectAnswer() {
+    Array.from(answerButtonsElement.children).forEach(button => {
+        setStatusClass(button, button.dataset.correct === 'true');
+    });
+}
+
+function setStatusClass(element, correct) {
+    if (correct) {
+        element.classList.add('correct');
+    } else {
+        element.classList.add('incorrect');
+    }
+}
+
+function endGame(success) {
+    questionContainer.classList.add('hide');
+    endMessageElement.classList.remove('hide');
+    if (success) {
+        endMessageElement.innerText = `Congratulations! You answered all the questions correctly! Your score is ${score}.`;
+    } else {
+        endMessageElement.innerText = `Game Over! Your score is ${score}.`;
+    }
+    startButton.innerText = 'Restart Game';
+    startButton.classList.remove('hide');
+    updateLeaderboard(currentUser, score);
 }
 
 function updateLeaderboard(username, score) {

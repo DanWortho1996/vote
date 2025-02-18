@@ -1,0 +1,78 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    position: absolute;
+    top: 20px; /* Adjust this value as needed to change the distance from the top */
+    width: 100%;
+    text-align: center;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    text-align: center;
+    width: 90%;
+    max-width: 500px;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.btn-container button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    width: 80%;
+    max-width: 300px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-container button:hover {
+    background-color: #0056b3;
+}
+
+.correct {
+    background-color: green;
+    animation: revealCorrect 1s forwards;
+}
+
+.incorrect {
+    background-color: red;
+    animation: revealIncorrect 1s forwards;
+}
+
+@keyframes revealCorrect {
+    0% { background-color: #007BFF; }
+    100% { background-color: green; }
+}
+
+@keyframes revealIncorrect {
+    0% { background-color: #007BFF; }
+    100% { background-color: red; }
+}
+
+.timer {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
