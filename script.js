@@ -261,10 +261,10 @@ const questions = [
         //Q25
         question: `The Winner of Beast Games won how much money in the first season?`,
         answers: [
-            {text: `5 Million +`, correct: false},
-            {text: `20 Million +`, correct: false},
-            {text: `15 Million +`, correct: false},
-            {text: `10 Million +`, correct: true}
+            {text: `5 Million`, correct: false},
+            {text: `20 Million`, correct: false},
+            {text: `15 Million`, correct: false},
+            {text: `10 Million`, correct: true}
         ]
     },
     {
