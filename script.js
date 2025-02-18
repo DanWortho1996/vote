@@ -18,6 +18,7 @@ let score = 0;
 
 const questions = [
     {
+        //Q1
         question: 'What is the capital of France?',
         answers: [
             {text: 'Paris', correct: true},
@@ -27,6 +28,7 @@ const questions = [
         ]
     },
     {
+        //Q2
         question: 'What year did England win the World Cup?',
         answers: [
             {text: '1970', correct: false},
@@ -36,6 +38,7 @@ const questions = [
         ]
     },
     {
+        //Q3
         question: 'What year did England win the World Cup?',
         answers: [
             {text: '1970', correct: false},
@@ -45,6 +48,7 @@ const questions = [
         ]
     },
     {
+        //Q4
         question: 'What was one of the first products SONY released when they established their company?',
         answers: [
             {text: 'Electric Rice Cooker', correct: true},
@@ -54,6 +58,7 @@ const questions = [
         ]
     },
     {
+        //Q5
         question: 'How many times has Germany won the World Cup?',
         answers: [
             {text: '6', correct: false},
@@ -63,6 +68,7 @@ const questions = [
         ]
     },
     {
+        //Q6
         question: 'What was the first animal to be sent into space?',
         answers: [
             {text: 'Fly', correct: false},
@@ -72,6 +78,7 @@ const questions = [
         ]
     },
     {
+        //Q7
         question: 'In the UK the BBC has an acronym for what?',
         answers: [
             {text: 'British Baseball Club', correct: false},
@@ -81,6 +88,7 @@ const questions = [
         ]
     },
     {
+        //Q8
         question: 'What does U.S.A stand for?',
         answers: [
             {text: 'United States of Austria', correct: false},
@@ -90,6 +98,7 @@ const questions = [
         ]
     },
     {
+        //Q9
         question: 'Who was the first person to walk on the Moon?',
         answers: [
             {text: 'Buzz Aldrin', correct: false},
@@ -99,6 +108,7 @@ const questions = [
         ]
     },
     {
+        //Q10
         question: 'Who Scored the Hand of God?',
         answers: [
             {text: 'Paul Gascoigne', correct: false},
@@ -108,6 +118,7 @@ const questions = [
         ]
     },
     {
+        //Q11
         question: 'In the Paris Olympics, how many Gold Medals did the UK come home with in 2024?',
         answers: [
             {text: '26', correct: false},
@@ -117,6 +128,7 @@ const questions = [
         ]
     },
     {
+        //Q12
         question: 'What year was DELL established?',
         answers: [
             {text: '1984', correct: true},
@@ -126,6 +138,7 @@ const questions = [
         ]
     },
     {
+        //Q13
         question: 'What is time?',
         answers: [
             {text: 'Distraction', correct: false},
@@ -135,6 +148,7 @@ const questions = [
         ]
     },
     {
+        //Q14
         question: 'In Football (Soccer), what does the Red Card mean when dished out to a player?',
         answers: [
             {text: 'Player must leave pitch immediately', correct: true},
@@ -144,6 +158,7 @@ const questions = [
         ]
     },
     {
+        //Q15
         question: 'What year did XBOX release their first Xbox Console?',
         answers: [
             {text: '2001', correct: true},
@@ -153,6 +168,7 @@ const questions = [
         ]
     },
     {
+        //Q16
         question: 'Who was the first woman to fly solo across the atlantic?',
         answers: [
             {text: 'Amanada Holden', correct: false},
@@ -162,6 +178,7 @@ const questions = [
         ]
     },
     {
+        //Q17
         question: "In the UK, how many countries came together to form the United Kingdom?",
         answers: [
             {text: '3', correct: false},
@@ -171,6 +188,7 @@ const questions = [
         ]
     },
     {
+        //Q18
         question: "In Pirates of the Caribbean, what was the name of the fictional character's lead role?",
         answers: [
             {text: 'Elizabeth Swan', correct: false},
@@ -180,6 +198,7 @@ const questions = [
         ]
     },
     {
+        //Q19
         question: "Where did Gregg's open their first shop location?",
         answers: [
             {text: 'Liverpool', correct: false},
@@ -189,6 +208,7 @@ const questions = [
         ]
     },
     {
+        //Q20
         question: 'What year was the last Apollo Mission to walk on the Moon?',
         answers: [
             {text: '1971', correct: false},
@@ -198,6 +218,7 @@ const questions = [
         ]
     },
     {
+        //Q21
         question: 'What was the animal\'s name that was sent into space?',
         answers: [
             {text: 'Buffy', correct: false},
@@ -205,13 +226,103 @@ const questions = [
             {text: 'Nemo', correct: false},
             {text: 'Oscar', correct: false}
         ]
+    },
+    {
+        //Q22
+        question: `When was Coca Cola invented?`,
+        asnwers: [
+            {text: `May 8th, 1886`, correct: true},
+            {text: `April 4th 1884`, correct: false},
+            {text: `December 18th, 1889`, correct: false},
+            {text: `January 9th 1885`, correct: false}
+        ]
+    },
+    {
+        //Q23
+        question: `What did Dr. John S. Pemberton invent in 1886?`,
+        answwers: [
+            {text: `Pepsi`, correct: false},
+            {text: `Fanta`, correct: false},
+            {text: `Coca Cola`, correct: true},
+            {text: `Spring Water`, correct: false}
+        ]
+    },
+    {
+        //Q24
+        question: `"Captain Price", is part of what game franchise?`,
+        answers: [
+            {text: `Overwatch`, correct: false},
+            {text: `Battlefield`, correct: false},
+            {text: `Call of Duty`, correct: true},
+            {text: `Minecraft`, corect: false}
+        ]
+    },
+    {
+        //Q25
+        question: `The Winner of Beast Games won how much money in the first season?`,
+        answers: [
+            {text: `5 Million +`, correct: false},
+            {text: `20 Million +`, correct: false},
+            {text: `15 Million +`, correct: false},
+            {text: `10 Million +`, correct: true}
+        ]
+    },
+    {
+        //Q26
+        question: `Who won the 2022 World Cup?`,
+        answers: [
+            {text: `Argentina`, correct: true},
+            {text: `France`, correct: false},
+            {text: `Italy`, correct: false},
+            {text: `Spain`, correct: false}
+        ]
+    },
+    {
+        //Q27
+        questions: `What year did The Falklands war occur?`,
+        answers: [
+            {text: `1992`, correct: false},
+            {text: `1982`, correct: true},
+            {text: `1978`, correct: false},
+            {text: `1984`, correct: false}
+        ]
+    },
+    {
+        //Q28
+        question: `Starbucks was established in which Country?`,
+        answers: [
+            {text: `Germany`, correct: false},
+            {text: `Syria`, correct: false},
+            {text: `United States of America`, correct: true},
+            {text: `Spain`, correct: false}
+        ]
+    },
+    {
+        //Q29
+        question: `What was Samsung first product they realsed?`,
+        asnwers: [
+            {text: `Mobile Phone`, correct: false},
+            {text: `Black & White Television`, correct: true},
+            {text: `Cables`, correct: false},
+            {text: `Cameras`, correct: false}
+        ]
+    },
+    {
+        //Q30
+        question: `What animal is known as Man's Best Friend?`,
+        answers: [
+            {text: `Spiders`, correct: false},
+            {text: `Bears`, correct: false},
+            {text: `Cats`, correct: false},
+            {text: `Dogs`, correct: true}
+        ]
     }
     //Add remaining questions here
 ];
 
 let shuffledQuestions, currentQuestionIndex;
 let timer;
-const timeLimit = 20; // time limit in seconds
+const timeLimit = 20; //Set time limit in seconds
 
 joinButton.addEventListener('click', joinGame);
 startButton.addEventListener('click', startGame);
