@@ -239,7 +239,7 @@ const questions = [
     },
     {
         //Q23
-        question: `What did Dr. John S. Pemberton invent in 1886?`,
+        question: `What did "Dr. John S. Pemberton" invent in 1886?`,
         answwers: [
             {text: `Pepsi`, correct: false},
             {text: `Fanta`, correct: false},
