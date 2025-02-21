@@ -386,6 +386,36 @@ const questions = [
             {text: `Chef & Cleaner`, correct: false},
             {text: `Truck Driver & Mechanic`, correct: true}
         ]
+    },
+    {
+        //Q38
+        question: `What is the estimated guess for how many teeth a Great White Shark has?`,
+        answers: [
+            {text: `300 Teeth`, correct: true},
+            {text: `268 Teeth`, correct: false},
+            {text: `312 Teeth`, correct: false},
+            {text: `274 Teeth`, correct: false}
+        ]
+    },
+    {
+        //Q39
+        question: `Which Country has a One Child Policy/Rule?`,
+        answers: [
+            {text: `Romania`, correct: false},
+            {text: `Moldova`, correct: false},
+            {text: `Turkey`, correct: false},
+            {text: `China`, correct: true}
+        ]
+    },
+    {
+        //Q40
+        question: `Which U.S State is the only state whose name is typed using one row of the keyboard`,
+        answers: [
+            {text: `Ney York`, correct: false},
+            {text: `Alaska`, correct: true},
+            {text: `Texas`, correct: false},
+            {text: `Alabama`, correct: false}
+        ]
     }
     //Add remaining questions here
 ];
