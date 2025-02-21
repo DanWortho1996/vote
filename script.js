@@ -54,7 +54,7 @@ const questions = [
             {text: 'Electric Rice Cooker', correct: true},
             {text: 'Television', correct: false},
             {text: 'Playstation', correct: false},
-                {text: 'Headset', correct: false}
+            {text: 'Headset', correct: false}
         ]
     },
     {
