@@ -230,7 +230,7 @@ const questions = [
     {
         //Q22
         question: "When was Coca Cola invented?",
-        asnwers: [
+        anwers: [
             {text: `May 8th, 1886`, correct: true},
             {text: `April 4th 1884`, correct: false},
             {text: `December 18th, 1889`, correct: false},
@@ -240,7 +240,7 @@ const questions = [
     {
         //Q23
         question: `What did "Dr. John S. Pemberton" invent in 1886?`,
-        answwers: [
+        answers: [
             {text: `Pepsi`, correct: false},
             {text: `Fanta`, correct: false},
             {text: `Coca Cola`, correct: true},
@@ -279,7 +279,7 @@ const questions = [
     },
     {
         //Q27
-        questions: `What year did The Falklands war occur?`,
+        question: `What year did The Falklands war occur?`,
         answers: [
             {text: `1992`, correct: false},
             {text: `1982`, correct: true},
@@ -299,14 +299,14 @@ const questions = [
     },
     {
         //Q29
-        question: `What was Samsung first product they realsed?`,
-        asnwers: [
+        question: `What was Samsung's first product they released?`,
+        answers: [
             {text: `Mobile Phone`, correct: false},
             {text: `Black & White Television`, correct: true},
             {text: `Cables`, correct: false},
             {text: `Cameras`, correct: false}
         ]
-    },
+    },    
     {
         //Q30
         question: `What animal is known as Man's Best Friend?`,
@@ -316,13 +316,83 @@ const questions = [
             {text: `Cats`, correct: false},
             {text: `Dogs`, correct: true}
         ]
+    },
+    {
+        //Q31
+        question: `How many hearts does an Octopus have?`,
+        answers: [
+            {text: `9`, correct: false},
+            {text: `1`, correct: false},
+            {text: `3`, correct: true},
+            {text: `4`, correct: false}
+        ]
+    },
+    {
+        //Q32
+        question: `What is a group of Hyenas called?`,
+        answers: [
+            {text: `Cackle`, correct: true},
+            {text: `Mosh`, correct: false},
+            {text: `scavengers`, correct: false},
+            {text: `Rage`, correct: false}
+        ]
+    },
+    {
+        //Q33
+        question: `What is a baby Kangaroo called?`,
+        answers: [
+            {text: `A Pouchy`, correct: false},
+            {text: `A Joey`, correct: true},
+            {text: `Apache`, correct: false},
+            {text: `A Club`, correct: false}
+        ]
+    },
+    {
+        //Q34
+        question: `The longest River in the world is what?`,
+        answers: [
+            {text: `Columbia River`, correct: false},
+            {text: `River Nile`, correct: true},
+            {text: `River Thames`, correct: false},
+            {text: `River Severn`, correct: false}
+        ]
+    },
+    {
+        //Q35
+        question: `Where is one place "Pig's" cannot look?`,
+        answers: [
+            {text: `Down To The Floor`, correct: false},
+            {text: `To The Left Side`, correct: false},
+            {text: `To The  Right Side`, correct: false},
+            {text: `Up Into The Night-Sky`, correct: true}
+        ]
+    },
+    {
+        //Q36
+        question: `Who remains the only female member of the royal family to have served in the Army?`,
+        answers: [
+            {text: `Princess Diane`, correct: false},
+            {text: `Queen Elizabeth II`, correct: true},
+            {text: `Queen Elizabeth I`, correct: false},
+            {text: `Megan Markle`, correct: false}
+        ]
+    },
+    {
+        //Q37
+        question: `What did Queen Elizabeth II train as in the Army?`,
+        answers: [
+            {text: `Doctor & Nurse`, correct: false},
+            {text: `RAF Pilot & Paratrooper`, correct: false},
+            {text: `Chef & Cleaner`, correct: false},
+            {text: `Truck Driver & Mechanic`, correct: true}
+        ]
     }
     //Add remaining questions here
 ];
 
 let shuffledQuestions, currentQuestionIndex;
 let timer;
-const timeLimit = 20; //Set time limit in seconds
+const timeLimit = 15; //Set time limit in seconds
 
 joinButton.addEventListener('click', joinGame);
 startButton.addEventListener('click', startGame);
