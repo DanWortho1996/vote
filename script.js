@@ -409,12 +409,112 @@ const questions = [
     },
     {
         //Q40
-        question: `Which U.S State is the only state whose name is typed using one row of the keyboard`,
+        question: `Which U.S State is the only state whose name is typed using one row of the keyboard?`,
         answers: [
             {text: `Ney York`, correct: false},
             {text: `Alaska`, correct: true},
             {text: `Texas`, correct: false},
             {text: `Alabama`, correct: false}
+        ]
+    },
+    {
+        //Q41
+        question: `How many Planet\'s are in our Solar System?`,
+        answers: [
+            {text: `9`, correct: false},
+            {text: `6`, correct: false},
+            {text: `7`, correct: false},
+            {text: `8`, correct: true}
+        ]
+    },
+    {
+        //Q42
+        question: `What Planet is the closest Planet to Earth on average?`,
+        answers: [
+            {text: `Saturn`, correct: false},
+            {text: `Moon`, correct: false},
+            {text: `Mercury`, correct: true},
+            {text: `Sun`, correct: false}
+        ]
+    },
+    {
+        //Q43
+        question: `How far is the Moon from Earth on average in miles?`,
+        answers: [
+            {text: `238,855 miles`, correct: true},
+            {text: `244,798 miles`, correct: false},
+            {text: `190,262 miles`, correct: false},
+            {text: `220,310 miles`, correct: false}
+        ]
+    },
+    {
+        //Q44
+        question: `What happens if you throw a stone or pebble into the Red Sea?`,
+        answers: [
+            {text: `Stone Turns Red`, correct: false},
+            {text: `Nothing`, correct: true},
+            {text: `A Volcano Erupt\'s`, correct: false},
+            {text: `A Island Forms`, correct: false}
+        ]
+    },
+    {
+        //Q45
+        question: `Where is the Red Sea Located?`,
+        answers: [
+            {text: `Middle East`, correct: true},
+            {text: `Europe`, correct: false},
+            {text: `South America's`, correct: false},
+            {text: `Asia`, correct: false}
+        ]
+    },
+    {
+        //Q46
+        question: `What are the Ring\'s around Saturn\'s Planet?`,
+        answers: [
+            {text: `Rocks`, correct: false},
+            {text: `Paper`, correct: false},
+            {text: `Dark Matter`, correct: false},
+            {text: `Asteroids`, correct: true}
+        ]
+    },
+    {
+        //Q47
+        question: `Where was the 2022 World Cup Hosted?`,
+        answers: [
+            {text: `Russia`, correct: false},
+            {text: `Qatar`, correct: true},
+            {text: `Armenia`, correct: false},
+            {text: `Japan`, correct: false}
+        ]
+    },
+    {
+        //Q48
+        question: `What is The Fastest Animal on Earth?`,
+        answers: [
+            {text: `Ostrich`, correct: false},
+            {text: `Jaguar`, correct: false},
+            {text: `Tiger`, correct: false},
+            {text: `Cheetah`, correct: true}
+        ]
+    },
+    {
+        //Q49
+        question: `Who was the Founder of the Mongol Empire?`,
+        answers: [
+            {text: `Mohammed Ali`, correct: false},
+            {text: `Genghis Khan`, correct: true},
+            {text: `Sadam Hussain`, correct: false},
+            {text: `Eminem`, correct: false}
+        ]
+    },
+    {
+        //Q50
+        question: `in what year did "John Logie Baird" first demonstrated color television in?`,
+        answers: [
+            {text: `1964`, correct: false},
+            {text: `1939`, correct: false},
+            {text: `1946`, correct: false},
+            {text: `1928`, correct: true}
         ]
     }
     //Add remaining questions here
