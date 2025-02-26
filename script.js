@@ -501,10 +501,10 @@ const questions = [
         //Q49
         question: `Who was the Founder of the Mongol Empire?`,
         answers: [
-            {text: `Mohammed Ali`, correct: false},
+            {text: `Ibn Battuta`, correct: false},
             {text: `Genghis Khan`, correct: true},
-            {text: `Sadam Hussain`, correct: false},
-            {text: `Eminem`, correct: false}
+            {text: `King Cyrus`, correct: false},
+            {text: `Alexander The Great`, correct: false}
         ]
     },
     {
