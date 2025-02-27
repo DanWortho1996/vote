@@ -39,12 +39,12 @@ const questions = [
     },
     {
         //Q3
-        question: 'What year did England win the World Cup?',
+        question: 'Who won the F1 2021 Driver\'s World Championship?',
         answers: [
-            {text: '1970', correct: false},
-            {text: '1966', correct: true},
-            {text: '1996', correct: false},
-            {text: '1984', correct: false}
+            {text: 'Fernando Alanso', correct: false},
+            {text: 'Max Verstappen', correct: true},
+            {text: 'Lando Norris', correct: false},
+            {text: 'Lewis Hamilton', correct: false}
         ]
     },
     {
