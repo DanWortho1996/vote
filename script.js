@@ -558,7 +558,9 @@ function setNextQuestion() {
 
 function showQuestion(question) {
     questionElement.innerText = question.question;
-    question.answers.forEach(answer => {
+    // Shuffle the answers
+    const shuffledAnswers = shuffleArray(question.answers);
+    shuffledAnswers.forEach(answer => {
         const button = document.createElement('button');
         button.innerText = answer.text;
         button.classList.add('btn');
@@ -587,11 +589,22 @@ function startTimer() {
 }
 
 function resetState() {
-    clearInterval(timer);
-    timerElement.innerText = '';
+    // Clear any existing state
     while (answerButtonsElement.firstChild) {
         answerButtonsElement.removeChild(answerButtonsElement.firstChild);
     }
+    // Reset timer
+    clearInterval(timer);
+    timerElement.innerText = '';
+}
+
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
 }
 
 function selectAnswer(e) {
@@ -605,22 +618,22 @@ function selectAnswer(e) {
     if (correct) {
         score++;
         currentQuestionIndex++;
-        if (currentQuestionIndex < shuffledQuestions.length) {
+    if (currentQuestionIndex < shuffledQuestions.length) {
             setTimeout(setNextQuestion, 2000); // Move to the next question after a delay
-        } else {
-            endGame(true);
-        }
+    } else {
+        endGame(true);
+    }
     } else {
         endGame(false);
     }
 }
-
+    
 function revealCorrectAnswer() {
     Array.from(answerButtonsElement.children).forEach(button => {
         setStatusClass(button, button.dataset.correct === 'true');
     });
 }
-
+    
 function setStatusClass(element, correct) {
     if (correct) {
         element.classList.add('correct');
@@ -628,7 +641,7 @@ function setStatusClass(element, correct) {
         element.classList.add('incorrect');
     }
 }
-
+    
 function endGame(success) {
     questionContainer.classList.add('hide');
     endMessageElement.classList.remove('hide');
@@ -640,8 +653,8 @@ function endGame(success) {
     startButton.innerText = 'Restart Game';
     startButton.classList.remove('hide');
     updateLeaderboard(currentUser, score);
-}
-
+}    
+    
 function updateLeaderboard(username, score) {
     const listItem = document.createElement('li');
     listItem.innerText = `${username} - Score: ${score}`;
