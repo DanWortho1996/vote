@@ -1,20 +1,18 @@
-const joinButton = document.getElementById('join-button');
-const startButton = document.getElementById('start-button');
-const questionContainer = document.getElementById('question-container');
-const questionElement = document.getElementById('question');
-const answerButtonsElement = document.getElementById('answer-buttons');
-const endMessageElement = document.getElementById('end-message');
-const leaderboard = document.getElementById('leaderboard');
-const leaderboardList = document.getElementById('leaderboard-list');
+document.addEventListener('DOMContentLoaded', () => {
+    const joinButton = document.getElementById('joinButton');
+    const startButton = document.getElementById('startButton');
+    const endMessageElement = document.getElementById('endMessage');
+    const questionContainer = document.getElementById('questionContainer');
+    const questionElement = document.getElementById('question');
+    const answerButtonsElement = document.getElementById('answerButtons');
+    const timerElement = document.getElementById('timer');
+    const leaderboard = document.getElementById('leaderboard');
+    const leaderboardList = document.getElementById('leaderboardList');
 
-// Timer element
-const timerElement = document.createElement('div');
-timerElement.classList.add('timer');
-questionContainer.prepend(timerElement);
-
-let players = [];
-let currentUser = '';
-let score = 0;
+    let players = [];
+    let currentUser;
+    let currentScore = 0;
+    let score;
 
 const questions = [
     {
@@ -518,146 +516,181 @@ const questions = [
         ]
     }
     //Add remaining questions here
-];
+];    
 
-let shuffledQuestions, currentQuestionIndex;
-let timer;
-const timeLimit = 15; //Set time limit in seconds
+    let shuffledQuestions, currentQuestionIndex;
+    let timer;
+    const timeLimit = 15; // Set time limit in seconds
 
-joinButton.addEventListener('click', joinGame);
-startButton.addEventListener('click', startGame);
+    joinButton.addEventListener('click', joinGame);
+    startButton.addEventListener('click', startGame);
 
-function joinGame() {
-    const usernameInput = document.getElementById('username');
-    currentUser = usernameInput.value.trim();
-    if (currentUser) {
-        players.push({ username: currentUser, score: 0 });
-        usernameInput.classList.add('hide');
-        joinButton.classList.add('hide');
-        startButton.classList.remove('hide');
-    } else {
-        alert('Please enter a username');
-    }
-}
-
-function startGame() {
-    startButton.classList.add('hide');
-    endMessageElement.classList.add('hide');
-    leaderboard.classList.add('hide');
-    shuffledQuestions = questions.sort(() => Math.random() - .5);
-    currentQuestionIndex = 0;
-    questionContainer.classList.remove('hide');
-    score = 0;
-    setNextQuestion();
-}
-
-function setNextQuestion() {
-    resetState();
-    showQuestion(shuffledQuestions[currentQuestionIndex]);
-}
-
-function showQuestion(question) {
-    questionElement.innerText = question.question;
-    // Shuffle the answers
-    const shuffledAnswers = shuffleArray(question.answers);
-    shuffledAnswers.forEach(answer => {
-        const button = document.createElement('button');
-        button.innerText = answer.text;
-        button.classList.add('btn');
-        button.classList.add('btn-container');
-        if (answer.correct) {
-            button.dataset.correct = answer.correct;
+    function joinGame() {
+        const usernameInput = document.getElementById('username');
+        currentUser = usernameInput.value.trim();
+        if (currentUser) {
+            localStorage.setItem('username', currentUser);
+            players.push({ username: currentUser, score: 0 });
+            usernameInput.classList.add('hide');
+            joinButton.classList.add('hide');
+            startButton.classList.remove('hide');
+        } else {
+            alert('Please enter a username');
         }
-        button.addEventListener('click', selectAnswer);
-        answerButtonsElement.appendChild(button);
-    });
-    startTimer();
-}
+    }
 
-function startTimer() {
-    let timeLeft = timeLimit;
-    timerElement.innerText = `Time left: ${timeLeft}s`;
-    timer = setInterval(() => {
-        timeLeft--;
+    function startGame() {
+        startButton.classList.add('hide');
+        endMessageElement.classList.add('hide');
+        leaderboard.classList.add('hide');
+        shuffledQuestions = questions.sort(() => Math.random() - 0.5);
+        currentQuestionIndex = 0;
+        score = 0;
+        setNextQuestion();
+    }
+
+    function setNextQuestion() {
+        resetState();
+        showQuestion(shuffledQuestions[currentQuestionIndex]);
+    }
+
+    function showQuestion(question) {
+        questionElement.innerText = question.question;
+        // Shuffle the answers
+        const shuffledAnswers = shuffleArray(question.answers);
+        shuffledAnswers.forEach(answer => {
+            const button = document.createElement('button');
+            button.innerText = answer.text;
+            button.classList.add('btn');
+            button.classList.add('btn-container');
+            if (answer.correct) {
+                button.dataset.correct = answer.correct;
+            }
+            button.addEventListener('click', selectAnswer);
+            answerButtonsElement.appendChild(button);
+        });
+        startTimer();
+    }
+
+    // script.js
+
+// Function to show the question container
+function showQuestionContainer() {
+    const questionContainer = document.getElementById('questionContainer');
+    questionContainer.classList.remove('hidden');
+}
+// Example: Show the question container when the join button is clicked
+document.getElementById('joinButton').addEventListener('click', showQuestionContainer);
+// Example: Show the question container when the start button is clicked
+document.getElementById('startButton').addEventListener('click', showQuestionContainer);
+
+
+    function startTimer() {
+        let timeLeft = timeLimit;
         timerElement.innerText = `Time left: ${timeLeft}s`;
-        if (timeLeft <= 0) {
-            clearInterval(timer);
-            revealCorrectAnswer();
+        timer = setInterval(() => {
+            timeLeft--;
+            timerElement.innerText = `Time left: ${timeLeft}s`;
+            if (timeLeft <= 0) {
+                clearInterval(timer);
+                revealCorrectAnswer();
+                endGame(false);
+            }
+        }, 1000);
+    }
+
+    function resetState() {
+        // Clear any existing state
+        while (answerButtonsElement.firstChild) {
+            answerButtonsElement.removeChild(answerButtonsElement.firstChild);
+        }
+        // Reset timer
+        clearInterval(timer);
+        timerElement.innerText = '';
+    }
+
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
+    function selectAnswer(e) {
+        clearInterval(timer);
+        const selectedButton = e.target;
+        const correct = selectedButton.dataset.correct === 'true';
+        revealCorrectAnswer();
+        Array.from(answerButtonsElement.children).forEach(button => {
+            button.removeEventListener('click', selectAnswer);
+        });
+        if (correct) {
+            score++;
+            currentQuestionIndex++;
+            if (currentQuestionIndex < shuffledQuestions.length) {
+                setTimeout(setNextQuestion, 2000); // Move to the next question after a delay
+            } else {
+                endGame(true);
+            }
+        } else {
             endGame(false);
         }
-    }, 1000);
-}
+    }
 
-function resetState() {
-    // Clear any existing state
-    while (answerButtonsElement.firstChild) {
-        answerButtonsElement.removeChild(answerButtonsElement.firstChild);
+    function revealCorrectAnswer() {
+        Array.from(answerButtonsElement.children).forEach(button => {
+            setStatusClass(button, button.dataset.correct === 'true');
+        });
     }
-    // Reset timer
-    clearInterval(timer);
-    timerElement.innerText = '';
-}
 
+    function setStatusClass(element, correct) {
+        if (correct) {
+            element.classList.add('correct');
+        } else {
+            element.classList.add('incorrect');
+        }
+    }
 
-function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
+    function endGame(success) {
+        questionContainer.classList.add('hide');
+        endMessageElement.classList.remove('hide');
+        if (success) {
+            endMessageElement.innerText = `Congratulations! You answered all the questions correctly! Your score is ${score}.`;
+        } else {
+            endMessageElement.innerText = `Game Over! Your score is ${score}.`;
+        }
+        startButton.innerText = 'Restart Game';
+        startButton.classList.remove('hide');
+        updateLeaderboard(currentUser, score);
+        saveHighScore(currentUser, score);
     }
-    return array;
-}
 
-function selectAnswer(e) {
-    clearInterval(timer);
-    const selectedButton = e.target;
-    const correct = selectedButton.dataset.correct === 'true';
-    revealCorrectAnswer();
-    Array.from(answerButtonsElement.children).forEach(button => {
-        button.removeEventListener('click', selectAnswer);
-    });
-    if (correct) {
-        score++;
-        currentQuestionIndex++;
-    if (currentQuestionIndex < shuffledQuestions.length) {
-            setTimeout(setNextQuestion, 2000); // Move to the next question after a delay
-    } else {
-        endGame(true);
+    function updateLeaderboard(username, score) {
+        const listItem = document.createElement('li');
+        listItem.innerText = `${username} - Score: ${score}`;
+        leaderboardList.appendChild(listItem);
+        leaderboard.classList.remove('hide');
     }
-    } else {
-        endGame(false);
+
+    function saveHighScore(username, score) {
+        let highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+        highScores.push({ username, score });
+        localStorage.setItem('highScores', JSON.stringify(highScores));
+        displayHighScores();
     }
-}
-    
-function revealCorrectAnswer() {
-    Array.from(answerButtonsElement.children).forEach(button => {
-        setStatusClass(button, button.dataset.correct === 'true');
-    });
-}
-    
-function setStatusClass(element, correct) {
-    if (correct) {
-        element.classList.add('correct');
-    } else {
-        element.classList.add('incorrect');
+
+    function displayHighScores() {
+        const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+        leaderboardList.innerHTML = '';
+        highScores.forEach(({ username, score }) => {
+            const listItem = document.createElement('li');
+            listItem.innerText = `${username} - Score: ${score}`;
+            leaderboardList.appendChild(listItem);
+        });
+        leaderboard.classList.remove('hide');
     }
-}
-    
-function endGame(success) {
-    questionContainer.classList.add('hide');
-    endMessageElement.classList.remove('hide');
-    if (success) {
-        endMessageElement.innerText = `Congratulations! You answered all the questions correctly! Your score is ${score}.`;
-    } else {
-        endMessageElement.innerText = `Game Over! Your score is ${score}.`;
-    }
-    startButton.innerText = 'Restart Game';
-    startButton.classList.remove('hide');
-    updateLeaderboard(currentUser, score);
-}    
-    
-function updateLeaderboard(username, score) {
-    const listItem = document.createElement('li');
-    listItem.innerText = `${username} - Score: ${score}`;
-    leaderboardList.appendChild(listItem);
-    leaderboard.classList.remove('hide');
-}
+
+    // Display high scores on page load
+    displayHighScores();
+}); // Closing brace for DOMContentLoaded event listener
